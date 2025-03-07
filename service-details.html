@@ -15,7 +15,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -27,17 +29,40 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tabLinks = document.querySelectorAll(".tab-link");
+      const tabPanes = document.querySelectorAll(".tab-pane");
+
+      tabLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // Remove 'active' from all tab links
+          tabLinks.forEach(item => item.classList.remove("active"));
+
+          // Remove 'show active' from all tab panes
+          tabPanes.forEach(item => item.classList.remove("show", "active"));
+
+          // Add 'active' class to clicked tab
+          this.classList.add("active");
+
+          // Get the target ID from the data-target attribute
+          const targetPane = document.querySelector(`#${this.getAttribute("data-target")}`);
+
+          if (targetPane) {
+            // Show the corresponding tab pane
+            targetPane.classList.add("show", "active");
+          }
+        });
+      });
+    });
+
+  </script>
+
 </head>
 
 <body class="service-details-page">
-
   <header id="header" class="header dark-background d-flex flex-column">
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
@@ -65,11 +90,13 @@
         <li><a href="index.html#about"><i class="bi bi-person navicon"></i> About</a></li>
         <li><a href="index.html#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
         <li><a href="index.html#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
-        <li><a href="index.html#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-        <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+        <li><a href="index.html#services" class="active"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
+        <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i
+              class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
             <li><a href="#">Dropdown 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
+                  class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="#">Deep Dropdown 1</a></li>
                 <li><a href="#">Deep Dropdown 2</a></li>
@@ -90,7 +117,6 @@
   </header>
 
   <main class="main">
-
     <!-- Page Title -->
     <div class="page-title dark-background">
       <div class="container d-lg-flex justify-content-between align-items-center">
@@ -102,74 +128,112 @@
           </ol>
         </nav>
       </div>
-    </div><!-- End Page Title -->
+    </div>
+    <!-- End Page Title -->
 
     <!-- Service Details Section -->
     <section id="service-details" class="service-details section">
-
       <div class="container">
-
         <div class="row gy-4">
-
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="services-list">
-              <a href="#" class="active">Web Design</a>
-              <a href="#">Software Development</a>
-              <a href="#">Product Management</a>
-              <a href="#">Graphic Design</a>
-              <a href="#">Marketing</a>
+              <a href="#" class="nav-link tab-link active" data-target="systems">Systems</a>
+              <a href="#" class="nav-link tab-link" data-target="webdesign">Web Design</a>
+              <a href="#" class="nav-link tab-link" data-target="encoding">Encoding</a>
+              <a href="#" class="nav-link tab-link" data-target="customerservice">Customer Service</a>
+              <a href="#" class="nav-link tab-link" data-target="chatsupport">Chat Support</a>
+              <a href="#" class="nav-link tab-link" data-target="photoediting">Photo Editing</a>
             </div>
 
             <h4>Enim qui eos rerum in delectus</h4>
-            <p>Nam voluptatem quasi numquam quas fugiat ex temporibus quo est. Quia aut quam quod facere ut non occaecati ut aut. Nesciunt mollitia illum tempore corrupti sed eum reiciendis. Maxime modi rerum.</p>
+            <p>Nam voluptatem quasi numquam quas fugiat ex temporibus quo est. Quia aut quam quod facere ut non
+              occaecati ut aut. Nesciunt mollitia illum tempore corrupti sed eum reiciendis. Maxime modi rerum.</p>
           </div>
 
           <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/services.jpg" alt="" class="img-fluid services-img">
-            <h3>Temporibus et in vero dicta aut eius lidero plastis trand lined voluptas dolorem ut voluptas</h3>
-            <p>
-              Blanditiis voluptate odit ex error ea sed officiis deserunt. Cupiditate non consequatur et doloremque consequuntur. Accusantium labore reprehenderit error temporibus saepe perferendis fuga doloribus vero. Qui omnis quo sit. Dolorem architecto eum et quos deleniti officia qui.
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> <span>Aut eum totam accusantium voluptatem.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Assumenda et porro nisi nihil nesciunt voluptatibus.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea</span></li>
-            </ul>
-            <p>
-              Est reprehenderit voluptatem necessitatibus asperiores neque sed ea illo. Deleniti quam sequi optio iste veniam repellat odit. Aut pariatur itaque nesciunt fuga.
-            </p>
-            <p>
-              Sunt rem odit accusantium omnis perspiciatis officia. Laboriosam aut consequuntur recusandae mollitia doloremque est architecto cupiditate ullam. Quia est ut occaecati fuga. Distinctio ex repellendus eveniet velit sint quia sapiente cumque. Et ipsa perferendis ut nihil. Laboriosam vel voluptates tenetur nostrum. Eaque iusto cupiditate et totam et quia dolorum in. Sunt molestiae ipsum at consequatur vero. Architecto ut pariatur autem ad non cumque nesciunt qui maxime. Sunt eum quia impedit dolore alias explicabo ea.
-            </p>
+            <div class="tab-content" id="serviceContent">
+              <div class="tab-pane fade show active" id="systems">
+                <h3>Systems Development</h3>
+                <p>Details about system development services...</p>
+
+                <img src="assets/img/services.jpg" alt="" class="img-fluid services-img">
+                <h3>Temporibus et in vero dicta aut eius lidero plastis trand lined voluptas dolorem ut voluptas</h3>
+                <p>
+                  Blanditiis voluptate odit ex error ea sed officiis deserunt. Cupiditate non consequatur et doloremque
+                  consequuntur. Accusantium labore reprehenderit error temporibus saepe perferendis fuga doloribus vero.
+                  Qui omnis quo sit. Dolorem architecto eum et quos deleniti officia qui.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check-circle"></i> <span>Aut eum totam accusantium voluptatem.</span></li>
+                  <li><i class="bi bi-check-circle"></i> <span>Assumenda et porro nisi nihil nesciunt
+                      voluptatibus.</span></li>
+                  <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea</span></li>
+                </ul>
+                <p>
+                  Est reprehenderit voluptatem necessitatibus asperiores neque sed ea illo. Deleniti quam sequi optio
+                  iste veniam repellat odit. Aut pariatur itaque nesciunt fuga.
+                </p>
+                <p>
+                  Sunt rem odit accusantium omnis perspiciatis officia. Laboriosam aut consequuntur recusandae mollitia
+                  doloremque est architecto cupiditate ullam. Quia est ut occaecati fuga. Distinctio ex repellendus
+                  eveniet velit sint quia sapiente cumque. Et ipsa perferendis ut nihil. Laboriosam vel voluptates
+                  tenetur nostrum. Eaque iusto cupiditate et totam et quia dolorum in. Sunt molestiae ipsum at
+                  consequatur vero. Architecto ut pariatur autem ad non cumque nesciunt qui maxime. Sunt eum quia
+                  impedit dolore alias explicabo ea.
+                </p>
+              </div>
+
+              <div class="tab-pane fade" id="webdesign">
+                <h3>Web Design</h3>
+                <p>Details about web design services...</p>
+              </div>
+              <div class="tab-pane fade" id="encoding">
+                <h3>Encoding</h3>
+                <p>Details about encoding services...</p>
+              </div>
+              <div class="tab-pane fade" id="customerservice">
+                <h3>Customer Service</h3>
+                <p>Details about customer service support...</p>
+              </div>
+              <div class="tab-pane fade" id="chatsupport">
+                <h3>Chat Support</h3>
+                <p>Details about chat support services...</p>
+              </div>
+              <div class="tab-pane fade" id="photoediting">
+                <h3>Photo Editing</h3>
+                <p>Details about photo editing services...</p>
+              </div>
+            </div>
           </div>
-
         </div>
-
       </div>
-
-    </section><!-- /Service Details Section -->
-
+      </div>
+    </section>
+    <!-- /Service Details Section -->
   </main>
 
   <footer id="footer" class="footer position-relative light-background">
 
     <div class="container">
       <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p>
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span>
+        </p>
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a
+          href="https://themewagon.com">ThemeWagon</a>
       </div>
     </div>
 
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
